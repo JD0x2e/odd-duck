@@ -1,7 +1,7 @@
 :root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(72, 103, 104);
-  color: whitesmoke;
+  background-color: whitesmoke;
+  color: black;
 }
 
 body {
@@ -19,15 +19,16 @@ main {
   display: flex;
   align-items: center;
   padding-top: 10px;
+  justify-content: space-between;
 }
 
-#logo-container {
+#logo {
   width: 60px;
   height: 60px;
   border-radius: 50%;
 }
 
-#logo-container:hover {
+#logo:hover {
   transform: scale(1.1);
   transition: 0.3s transform ease;
 }
@@ -48,7 +49,7 @@ h1::after {
   bottom: 0;
   left: 0;
   height: 3px;
-  background-color: whitesmoke;
+  background-color: black;
   transition: opacity 300ms, transform 300ms;
   width: 93%;
   margin-left: 20px;
@@ -69,7 +70,8 @@ h1:hover::after {
   line-height: 1.25;
 }
 
-#results-btn {
+#results-btn,
+#delete-results {
   background-color: rgb(145, 145, 145);
   color: rgb(255, 255, 255);
   padding: 0.5rem 1rem;
@@ -80,7 +82,8 @@ h1:hover::after {
   cursor: pointer;
 }
 
-#results-btn:hover {
+#results-btn:hover,
+#delete-results:hover {
   background-color: rgb(157, 157, 157);
   color: rgb(48, 48, 48);
   transform: scale(1.05);
@@ -141,4 +144,20 @@ footer {
   display: flex;
   justify-content: center;
   padding: 1.5rem;
+}
+
+.dark {
+  background-color: rgb(41, 41, 41);
+  color: whitesmoke;
+}
+
+.light {
+  background-color: whitesmoke;
+  color: rgb(41, 41, 41);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
