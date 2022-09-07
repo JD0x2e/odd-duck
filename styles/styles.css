@@ -48,7 +48,7 @@ h1::after {
   transform: scale(0); /* Starts invisible */
   transform-origin: center;
 }
-
+/* comment */
 h1:hover::after {
   transform: scale(1); /* Hover makes it NOT invisible */
 }
