@@ -2,6 +2,12 @@
 
 let productContainer = document.getElementById("img-container");
 let resultButton = document.getElementById("results-btn");
+document
+  .getElementById("delete-results")
+  .addEventListener("click", function () {
+    localStorage.removeItem("productdata");
+    alert("You've cleared the data, now refresh the page and start again!");
+  });
 let image1 = document.getElementById("img1");
 let image2 = document.getElementById("img2");
 let image3 = document.getElementById("img3");
@@ -11,11 +17,11 @@ let maxClicksAllowed = 25;
 
 // functional logic
 
-function OddDuck(name, src) {
+function OddDuck(name, src, views = 0, clicks = 0) {
   this.name = name;
   this.src = src;
-  this.views = 0;
-  this.clicks = 0;
+  this.views = views;
+  this.clicks = clicks;
   OddDuck.allDucksArray.push(this);
 }
 
@@ -162,29 +168,56 @@ function renderChart() {
   const myChart = new Chart(canvasChart, config);
 
   document.querySelector(".chart-container").classList.add("show");
+
+  // set data in localStorage
+  setLocalStorage();
+}
+
+function setLocalStorage() {
+  localStorage.setItem("productdata", JSON.stringify(OddDuck.allDucksArray));
+}
+
+// function that will run every time the page loads
+function checkLocalStorage() {
+  // get the local storage data in as a string (if its not set, it will be undefined aka falsy)
+  const localData = JSON.parse(localStorage.getItem("productdata"));
+
+  if (localData) {
+    // if localData is truthy
+    // loop through the localdata and create a new product for each item
+    for (let i = 0; i < localData.length; i++) {
+      let name = localData[i].name;
+      let src = localData[i].src;
+      let views = localData[i].views;
+      let clicks = localData[i].clicks;
+      new OddDuck(name, src, views, clicks);
+    }
+    // if localData is falsy
+  } else {
+    new OddDuck("Bag", "./images/bag.jpeg");
+    new OddDuck("Banana", "./images/banana.jpeg");
+    new OddDuck("Bathroom", "./images/bathroom.jpeg");
+    new OddDuck("Boots", "./images/boots.jpeg");
+    new OddDuck("Breakfast", "./images/breakfast.jpeg");
+    new OddDuck("Bubblegum", "./images/bubblegum.jpeg");
+    new OddDuck("Chair", "./images/chair.jpeg");
+    new OddDuck("Cthulhu", "./images/cthulhu.jpeg");
+    new OddDuck("Dog Duck", "./images/dog-duck.jpeg");
+    new OddDuck("Dragon", "./images/dragon.jpeg");
+    new OddDuck("Pen", "./images/pen.jpeg");
+    new OddDuck("Pet Sweep", "./images/pet-sweep.jpeg");
+    new OddDuck("Scissors", "./images/scissors.jpeg");
+    new OddDuck("Shark", "./images/shark.jpeg");
+    new OddDuck("Sweep", "./images/sweep.jpeg");
+    new OddDuck("Tauntaun", "./images/tauntaun.jpeg");
+    new OddDuck("Unicorn", "./images/unicorn.jpeg");
+    new OddDuck("Water Can", "./images/water-can.jpeg");
+    new OddDuck("Wing Glass", "./images/wine-glass.jpeg");
+  }
 }
 
 // executable code
-new OddDuck("Bag", "./images/bag.jpeg");
-new OddDuck("Banana", "./images/banana.jpeg");
-new OddDuck("Bathroom", "./images/bathroom.jpeg");
-new OddDuck("Boots", "./images/boots.jpeg");
-new OddDuck("Breakfast", "./images/breakfast.jpeg");
-new OddDuck("Bubblegum", "./images/bubblegum.jpeg");
-new OddDuck("Chair", "./images/chair.jpeg");
-new OddDuck("Cthulhu", "./images/cthulhu.jpeg");
-new OddDuck("Dog Duck", "./images/dog-duck.jpeg");
-new OddDuck("Dragon", "./images/dragon.jpeg");
-new OddDuck("Pen", "./images/pen.jpeg");
-new OddDuck("Pet Sweep", "./images/pet-sweep.jpeg");
-new OddDuck("Scissors", "./images/scissors.jpeg");
-new OddDuck("Shark", "./images/shark.jpeg");
-new OddDuck("Sweep", "./images/sweep.jpeg");
-new OddDuck("Tauntaun", "./images/tauntaun.jpeg");
-new OddDuck("Unicorn", "./images/unicorn.jpeg");
-new OddDuck("Water Can", "./images/water-can.jpeg");
-new OddDuck("Wing Glass", "./images/wine-glass.jpeg");
-
+checkLocalStorage();
 renderProducts();
 
 productContainer.addEventListener("click", handleImageClick);
