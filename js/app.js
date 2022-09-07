@@ -32,12 +32,15 @@ function renderProducts() {
   product2 = getRandomNumber();
   product3 = getRandomNumber();
 
-  // Logic to check that product 1, 2 and 3 aren't in my array
+  // check none of the numbers are the same or that they arent in the usedProducts array, otherwise reset them
 
   while (
     product1 === product2 ||
     product1 === product3 ||
-    product2 === product3
+    product2 === product3 ||
+    usedProducts.includes(product1) ||
+    usedProducts.includes(product2) ||
+    usedProducts.includes(product3)
   ) {
     product1 = getRandomNumber();
     product2 = getRandomNumber();
@@ -57,8 +60,10 @@ function renderProducts() {
   OddDuck.allDucksArray[product2].views++;
   OddDuck.allDucksArray[product3].views++;
 
-  // usedProducts = [];
-  // usedProducts.push(product1, product2, product3);
+  // clear out the usedProducts array
+  usedProducts = [];
+  // push the products into the usedProducts arrau
+  usedProducts.push(product1, product2, product3);
 }
 
 // this function is the event listener of the section with 3 images inside
