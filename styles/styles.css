@@ -1,0 +1,136 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(72, 103, 104);
+  color: whitesmoke;
+}
+
+#heading-container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+#logo-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+#logo-container:hover {
+  transform: scale(1.1);
+  transition: 0.3s transform ease;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 0.5rem;
+  /* Following styles effect fancy hovering*/
+  display: block;
+  position: relative;
+  font-size: 2rem;
+  padding-left: 0.5em;
+}
+/* Styles so underline comes in from center of word */
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: whitesmoke;
+  transition: opacity 300ms, transform 300ms;
+  width: 93%;
+  margin-left: 20px;
+  opacity: 1;
+  transform: scale(0); /* Starts invisible */
+  transform-origin: center;
+}
+/* comment */
+h1:hover::after {
+  transform: scale(1); /* Hover makes it NOT invisible */
+}
+
+#results-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  line-height: 1.25;
+}
+
+#results-btn {
+  background-color: rgb(145, 145, 145);
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  width: max-content;
+  height: max-content;
+  font-size: 0.8rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+#results-btn:hover {
+  background-color: rgb(157, 157, 157);
+  color: rgb(48, 48, 48);
+  transform: scale(1.05);
+}
+
+section img {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+#img-container {
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  border: double 7.5px rgb(0, 0, 0);
+  background-color: rgb(170, 170, 170);
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+#img1,
+#img2,
+#img3 {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  transform: scale(1);
+  transition: 0.25s transform ease;
+}
+
+#img1:hover,
+#img2:hover,
+#img3:hover {
+  transform: scale(1.05);
+}
+
+.chart-container {
+  max-width: 1000px;
+  background-color: rgb(170, 170, 170);
+  display: none;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  color: black;
+}
+
+.show {
+  display: flex;
+  border: double black 7.5px;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
