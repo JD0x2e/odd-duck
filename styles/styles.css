@@ -10,6 +10,9 @@ body {
 
 main {
   min-height: 85vh;
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 #heading-container {
@@ -97,8 +100,9 @@ section img {
 #img-container {
   margin: 0 auto;
   margin-top: 3rem;
-  width: 50%;
+  width: 90%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   border: double 7.5px rgb(0, 0, 0);
   background-color: rgb(170, 170, 170);
