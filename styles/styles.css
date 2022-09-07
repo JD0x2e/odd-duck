@@ -4,6 +4,14 @@
   color: whitesmoke;
 }
 
+body {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 85vh;
+}
+
 #heading-container {
   max-width: 1024px;
   width: 90%;
